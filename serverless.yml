@@ -1,0 +1,20 @@
+service: hello-world
+
+provider:
+  name: aws
+  runtime: java8
+  stage: ${opt:stage, "dev"}
+  region: us-west-2
+  memorySize: 512
+  timeout: 20
+
+package:
+  artifact: build/libs/${self:service}.jar
+
+functions:
+  helloworld-handler:
+    handler: com.merricklabs.lambda.handlers.HelloWorldHandler
+    events:
+      - http:
+          path: /
+          method: get
