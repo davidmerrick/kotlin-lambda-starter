@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/davidmerrick/kotlin-lambda-starter.svg?style=svg)](https://circleci.com/gh/davidmerrick/kotlin-lambda-starter)
+
 Starter project for Kotlin microservice on AWS Lambda
 
 Features:
