@@ -19,6 +19,6 @@ class HelloWorldLogicTest : IntegrationTestBase() {
         val logic = get<HelloWorldLogic>()
         val response = logic.handleRequest(mockInput, mockContext)
         response.statusCode shouldBe HttpStatus.SC_OK
-        response.body shouldBe "Hello, world!"
+        response.body shouldBe MESSAGE
     }
 }
