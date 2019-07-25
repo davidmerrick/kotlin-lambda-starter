@@ -22,6 +22,10 @@ object Versions {
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.3.2"
 
+    const val mockito_kotlin: String = "2.1.0"
+
+    const val slf4j_jdk14: String = "1.7.26"
+
     const val kotlin_logging: String = "1.6.26" // available: "1.7.1"
 
     const val kotlintest_runner_junit5: String = "3.3.2" // available: "3.4.0"

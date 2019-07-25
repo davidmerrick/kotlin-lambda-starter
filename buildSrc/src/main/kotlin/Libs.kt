@@ -48,6 +48,15 @@ object Libs {
     const val jaxb_core: String = "com.sun.xml.bind:jaxb-core:" + Versions.com_sun_xml_bind
 
     /**
+     * https://github.com/nhaarman/mockito-kotlin */
+    const val mockito_kotlin: String = "com.nhaarman.mockitokotlin2:mockito-kotlin:" +
+            Versions.mockito_kotlin
+
+    /**
+     * http://www.slf4j.org */
+    const val slf4j_jdk14: String = "org.slf4j:slf4j-jdk14:" + Versions.slf4j_jdk14
+
+    /**
      * http://jaxb.java.net */
     const val jaxb_impl: String = "com.sun.xml.bind:jaxb-impl:" + Versions.com_sun_xml_bind
 

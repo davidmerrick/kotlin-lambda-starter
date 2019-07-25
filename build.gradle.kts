@@ -24,9 +24,10 @@ dependencies {
     implementation(Libs.jackson_databind)
     implementation(Libs.jackson_annotations)
     implementation(Libs.slf4j_api)
+    implementation(Libs.slf4j_jdk14)
     implementation(Libs.koin_core)
     implementation(Libs.httpcore)
-    
+
     // JAX-B dependencies for JDK 9+
     implementation(Libs.jaxb_api)
     implementation(Libs.jaxb_core)
@@ -37,6 +38,7 @@ dependencies {
     testImplementation(Libs.kotlin_test)
     testImplementation(Libs.kotlintest_runner_junit5)
     testImplementation(Libs.testng)
+    testImplementation(Libs.mockito_kotlin)
 }
 
 val deployDev = tasks.create<Exec>("deployDev") {
