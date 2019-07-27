@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 group = "com.merricklabs.lambda"
 
 plugins {
@@ -41,31 +39,47 @@ dependencies {
     testImplementation(Libs.mockito_kotlin)
 }
 
-val deployDev = tasks.create<Exec>("deployDev") {
-    commandLine = listOf("serverless", "deploy", "--stage=dev")
-}
+tasks {
 
-val deployPrd = tasks.create<Exec>("deployPrd") {
-    commandLine = listOf("serverless", "deploy", "--stage=prd")
-}
+    val deployPrd by creating(Exec::class) {
+        commandLine = listOf("serverless", "deploy", "--stage=prd")
+        dependsOn("shadowJar")
+    }
 
-// Alias for deploy dev
-val deploy = tasks.create("deploy")
-deploy.dependsOn(deployDev)
+    val deployDev by creating(Exec::class) {
+        commandLine = listOf("serverless", "deploy", "--stage=dev")
+        dependsOn("shadowJar")
+    }
 
-deployDev.dependsOn(tasks.getByName("shadowJar"))
-deployPrd.dependsOn(tasks.getByName("shadowJar"))
+    val deploy by creating {
+        dependsOn(deployDev)
+    }
 
-tasks.test {
-    useTestNG()
-}
+    test {
+        useTestNG()
+    }
 
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
-}
+    val buildZip by creating(Zip::class) {
+        from(compileJava)
+        from(processResources)
+        into("lib") {
+            from(configurations.runtimeClasspath)
+        }
+    }
 
-val compileTestKotlin: KotlinCompile by tasks
-compileTestKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    build {
+        dependsOn(buildZip)
+    }
+
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+
+    compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
 }

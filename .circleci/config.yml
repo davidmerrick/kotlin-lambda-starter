@@ -9,7 +9,12 @@ jobs:
       TERM: dumb
     steps:
       - checkout
+      - run: ./gradlew build
       - run: ./gradlew test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build/distributions/*
   deploy:
     docker:
       - image: circleci/openjdk:11.0.3-stretch
@@ -23,7 +28,8 @@ jobs:
       - run: sudo apt-get install -y build-essential nodejs
       - run: sudo npm install -g serverless
       - checkout
-      - run: ./gradlew build
+      - attach_workspace:
+          at: /tmp/workspace
       - deploy:
           name: Deploy to AWS
           command: ./gradlew deployPrd

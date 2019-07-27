@@ -9,7 +9,7 @@ provider:
   timeout: 20
 
 package:
-  artifact: build/libs/${self:service}.jar
+  artifact: /tmp/workspace/build/distributions/${self:service}.jar
 
 functions:
   helloworld-handler:
