@@ -15,7 +15,7 @@ functions:
   helloworld-handler:
     handler: com.merricklabs.lambda.handlers.StreamLambdaHandler
       events:
-          - http:
+        - http:
             path: /{proxy+}
             method: any
             cors: true
