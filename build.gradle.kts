@@ -3,7 +3,6 @@ group = "com.merricklabs.lambda"
 plugins {
     kotlin("jvm") version Versions.org_jetbrains_kotlin
     id("de.fayard.buildSrcVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
-    id("com.github.johnrengelman.shadow") version Versions.com_github_johnrengelman_shadow_gradle_plugin
 }
 
 repositories {
@@ -12,6 +11,10 @@ repositories {
 }
 
 dependencies {
+    implementation(Libs.guava)
+    implementation(Libs.aws_serverless_java_container_jersey)
+    implementation(Libs.jersey_hk2)
+    implementation(Libs.jersey_media_json_jackson)
     implementation(Libs.kotlin_stdlib_jdk8)
     implementation(Libs.kotlin_logging)
     implementation(Libs.aws_lambda_java_core)
@@ -32,11 +35,13 @@ dependencies {
     implementation(Libs.jaxb_impl)
     implementation(Libs.activation)
 
+    testImplementation(Libs.okhttp)
     testImplementation(Libs.koin_test)
     testImplementation(Libs.kotlin_test)
     testImplementation(Libs.kotlintest_runner_junit5)
     testImplementation(Libs.testng)
     testImplementation(Libs.mockito_kotlin)
+    testImplementation(Libs.jersey_container_grizzly2_http)
 }
 
 tasks {
