@@ -16,7 +16,7 @@ class HelloResourceTest : IntegrationTestBase() {
     @Test
     fun `Resource should return "hello, world!"`(){
         val request = Request.Builder()
-                .url(BASE_URI)
+                .url("$BASE_URI/hello")
                 .get()
                 .build()
         val response = okHttpClient.newCall(request).execute()

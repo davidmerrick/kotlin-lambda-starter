@@ -7,7 +7,7 @@ import javax.ws.rs.GET
 import javax.ws.rs.Path
 import javax.ws.rs.core.Response
 
-@Path("/")
+@Path("/hello")
 class HelloResource: KoinComponent {
     private val logic by inject<HelloLogic>()
 
