@@ -12,10 +12,10 @@ package:
   artifact: /tmp/workspace/build/distributions/${self:service}.zip
 
 functions:
-  helloworld-handler:
+  handler:
     handler: com.merricklabs.lambda.handlers.StreamLambdaHandler
-      events:
-        - http:
-            path: /{proxy+}
-            method: any
-            cors: true
+    events:
+      - http:
+          path: /{proxy+}
+          method: any
+          cors: true
