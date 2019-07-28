@@ -13,6 +13,9 @@ jobs:
       - run: ./gradlew test
       - store_test_results:
           path: build/test-results
+      - store_artifacts:
+          path: build/reports/tests/test
+          destination: tests
       - persist_to_workspace:
           root: .
           paths:
