@@ -15,6 +15,10 @@ Features:
 This repo is configured as a template repo. Use [this guide](https://help.github.com/en/articles/creating-a-repository-from-a-template)
 to create a new repo using it.
 
+After creating your repo, rename the following:
+- `service` in `serverless.yml` to the name of your service
+- `rootProject.name` in `settings.gradle.kts` to the name of your service
+
 # Deployment
 
 CircleCI is already configured with a test and deployment workflow. Simply import the project into CircleCI and it'll work.
